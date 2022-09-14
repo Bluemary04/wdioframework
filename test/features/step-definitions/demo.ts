@@ -51,3 +51,63 @@ When(/^I perform input web interactions$/, async function () {
     await browser.keys(charStr);
   }
 });
+
+When(/^I perform dropdown web interactions$/, async function () {
+  /** dropdown: Select by text and attribute */
+  const dropdown = await $('#dropdown');
+  await dropdown.selectByVisibleText("Option 2");
+
+  await dropdown.selectByAttribute("Value", "1");
+  
+  /** dropdown: Get list of options */
+  const dropdownAray = await $$('select > option');
+  let arr = []; 
+
+  for (let i = 0; i < dropdownAray.length; i++){
+    let ele = dropdownAray[i];
+    let val = await ele.getText();
+    arr.push(val);
+    console.log(`>> Options array are: ${arr}`);
+  }
+
+});
+
+When(/^I perform checkbox web interactions$/, async function () {
+  /** checkbox: Select and deselect a checkbox item */
+  const checkboxes = await $$('[type="checkbox"]');
+ 
+  if(!await checkboxes[0].isSelected()) {
+    await checkboxes[0].click();
+  }
+
+  await checkboxes[1].click();
+
+  /** Checkbox: Select all options */
+  checkboxes.forEach(async checkbox => {
+    if(!await checkbox.isSelected()) {
+
+      checkbox.click();
+    }
+  });
+
+  await browser.debug();
+});
+
+Then(/^I expect the dropdown selected option contains (.*) text$/, async function (expectedText) {
+  /**
+   * dropdown: check the text of selected option
+   */
+  const selectedOption = await $('//select/option[@selected="selected"]');
+  const optionValue = await selectedOption.getText();
+  chai.expect(optionValue).to.equal(expectedText);
+});
+
+Then(/^I expect the checkbox item is selected$/, async function () {
+  /**
+   * checkbox: check the text of selected option
+   */
+  const checkboxes = await $$('[type="checkbox"]');
+  const isSelected = await checkboxes[0].isSelected();
+  chai.expect(isSelected).to.be.true;
+
+});
