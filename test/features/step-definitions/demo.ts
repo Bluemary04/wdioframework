@@ -143,6 +143,29 @@ When(/^I perform alerts web interactions$/, async function () {
   };
 });
 
+When(/^I perform upload web interactions$/, async function () {
+  /**File upload: accept alert */
+  await $('#file-upload').addValue(`${process.cwd()}/data/dummyFile.txt`);
+  await $('#file-submit').click(); 
+  await browser.debug();
+});
+
+When(/^I perform frame web interactions$/, async function () {
+  /**Frame: switch to frame and switch back to parent frame */
+  await $('=iFrame').click(); 
+  const iFrame = await $('#mce_0_ifr');
+  await browser.switchToFrame(iFrame);
+  /** Key interaction */
+  await $('#tinymce').click();
+  await browser.keys(["Meta", "A"]);
+  await browser.pause(1000);
+  await browser.keys(["Delete"])
+
+  await $('#tinymce').setValue('Switched to iframe....');
+
+  await browser.switchToParentFrame();
+});
+
 Then(/^I expect the dropdown selected option contains (.*) text$/, async function (expectedText) {
   /**
    * dropdown: check the text of selected option

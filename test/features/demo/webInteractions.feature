@@ -11,6 +11,8 @@ Feature: Web interactions
             | WEB-02 | /dropdown | dropdown   |
             | WEB-03 | /windows  | window     | 
             | WEB-04 | /javascript_alerts | alerts   |
+            | WEB-05 | /upload | upload   |
+            | WEB-06 | /frames | frame    |
 
 
     Scenario Outline: Demo dropdown web interactions
