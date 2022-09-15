@@ -89,8 +89,58 @@ When(/^I perform checkbox web interactions$/, async function () {
       checkbox.click();
     }
   });
+});
 
-  await browser.debug();
+When(/^I perform window web interactions$/, async function () {
+  /** window: Get window title, switch to new window */
+  await $('=Click Here').click();
+  await $('=Elemental Selenium').click();
+  let currentWindowTitle = await browser.getTitle();
+  const parentWindowHandle = await browser.getWindowHandle();
+  const winHandles = await browser.getWindowHandles();
+
+  for (let i = 0; i < winHandles.length; i++){
+    console.log(winHandles[i]);
+    await browser.switchToWindow(winHandles[i]);
+    currentWindowTitle = await browser.getTitle();
+    if (currentWindowTitle === 'Elemental Selenium: Receive a Free, Weekly Tip on Using Selenium like a Pro') {
+          await browser.switchToWindow(winHandles[i])
+          let headerText = await $('<h1>').getText();
+          console.log(`>>>> header title: ${headerText}`)
+    
+        }
+  }
+
+  /**window: Switch back to parent window */
+  await browser.switchToWindow(parentWindowHandle);
+  const parentTitle = await $('<h3>').getText();
+  console.log(`>>> parent window title: ${parentTitle}`);
+
+});
+
+When(/^I perform alerts web interactions$/, async function () {
+  /** alert: accept alert */
+  await $('button=Click for JS Alert').click();
+
+  if(await browser.isAlertOpen()) {
+    await browser.acceptAlert();
+  };
+
+  /**Confirm: dismiss alert */
+  await $('button=Click for JS Confirm').click();
+  if(await browser.isAlertOpen()) {
+    await browser.dismissAlert();
+  };
+
+  /**Prompt: Get alert value, type text and accept alert */
+  await $('button=Click for JS Prompt').click();
+  if(await browser.isAlertOpen()) {
+    const alertText = await browser.getAlertText();
+    console.log(`>>> alert text is: ${alertText}`);
+    await browser.sendAlertText('Some random text');
+    await browser.acceptAlert();
+
+  };
 });
 
 Then(/^I expect the dropdown selected option contains (.*) text$/, async function (expectedText) {
