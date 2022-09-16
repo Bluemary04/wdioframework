@@ -1,6 +1,5 @@
 Feature: Web interactions
-
-    @demo
+    
     Scenario Outline: Demo <webElement> web interactions
         Given the-internet.herokuapp page is opened in <endpoint> path
         When I perform <webElement> web interactions
@@ -13,6 +12,7 @@ Feature: Web interactions
             | WEB-04 | /javascript_alerts | alerts   |
             | WEB-05 | /upload | upload   |
             | WEB-06 | /frames | frame    |
+            | WEB-06 | /tables | table    |
 
 
     Scenario Outline: Demo dropdown web interactions
@@ -40,3 +40,7 @@ Feature: Web interactions
         Examples:
             | TestID | endpoint    | webElement |
             | WEB-01 | /checkboxes | checkbox   |
+
+    Scenario: Scroll behavior
+        Given www.amazon page is opened in .au path
+        When I scroll down and up
