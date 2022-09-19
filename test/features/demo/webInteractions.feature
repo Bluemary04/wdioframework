@@ -14,7 +14,7 @@ Feature: Web interactions
             | WEB-06 | /frames | frame    |
             | WEB-06 | /tables | table    |
 
-
+    @smoke
     Scenario Outline: Demo dropdown web interactions
         Given the-internet.herokuapp page is opened in <endpoint> path
         Then I expect the dropdown selected option contains Please select an option text
@@ -22,7 +22,8 @@ Feature: Web interactions
         Examples:
             | TestID | endpoint  | webElement |
             | WEB-02 | /dropdown | dropdown   |
-
+    
+    @smoke
     Scenario Outline: Demo checkbox web interactions
         Given the-internet.herokuapp page is opened in <endpoint> path
         When I perform <webElement> web interactions

@@ -4,7 +4,8 @@
     "description": "framework from 0 practice",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "demo": "npx wdio wdio.conf.ts --cucumberOpts.tagExpression='@demo' ",
+        "smoke": "npx wdio wdio.conf.ts --cucumberOpts.tagExpression='@smoke' ",
         "wdio": "wdio run test/wdio.conf.ts"
     },
     "keywords": [

@@ -1,5 +1,6 @@
 Feature: Demo Feature
 
+    @demo
     Scenario Outline: Scenario Outline name
         Given Google page is opened
         When Search with <SearchItem>
