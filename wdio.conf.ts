@@ -1,4 +1,7 @@
 import type { Options } from '@wdio/types'
+import dotenv from 'dotenv'
+let headless = process.env.HEADLESS;
+dotenv.config()
 
 export const config: Options.Testrunner = {
     //
@@ -87,7 +90,7 @@ export const config: Options.Testrunner = {
         //
         browserName: 'chrome',
         "goog:chromeOptions": {
-            args: ['--auto-open-devtools-for-tabs']
+            args: headless === "Y" ? ['--headless', '--disable-dev-shm-usage', '--no-sandbox', '--window-size=1920,1080', '--disable-gpu'] : []
         },
         acceptInsecureCerts: true,
         timeouts: { implicit: 15000, pageLoad: 20000, script: 30000}
