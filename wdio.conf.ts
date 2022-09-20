@@ -1,6 +1,7 @@
 import type { Options } from '@wdio/types'
 import dotenv from 'dotenv'
 let headless = process.env.HEADLESS;
+let debug = process.env.DEBUG;
 dotenv.config()
 
 export const config: Options.Testrunner = {
@@ -90,7 +91,7 @@ export const config: Options.Testrunner = {
         //
         browserName: 'chrome',
         "goog:chromeOptions": {
-            args: headless === "Y" ? ['--headless', '--disable-dev-shm-usage', '--no-sandbox', '--window-size=1920,1080', '--disable-gpu'] : []
+            args: headless.toUpperCase() === "Y" ? ['--headless', '--disable-dev-shm-usage', '--no-sandbox', '--window-size=1920,1080', '--disable-gpu'] : []
         },
         acceptInsecureCerts: true,
         timeouts: { implicit: 15000, pageLoad: 20000, script: 30000}
@@ -106,7 +107,7 @@ export const config: Options.Testrunner = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'error',
+    logLevel: debug.toUpperCase() === "Y" ? 'info' : 'error',
     //
     // Set specific log levels per logger
     // loggers:
@@ -274,8 +275,11 @@ export const config: Options.Testrunner = {
      * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
      * @param {Object}                 context  Cucumber World object
      */
-    // beforeScenario: function (world, context) {
-    // },
+    beforeScenario: function (world, context) {
+        let arr = world.pickle.name.split(/:/);
+        // @ts-ignore
+        if (arr.length > 0) browser.config.testid = arr[0]
+    },
     /**
      *
      * Runs before a Cucumber Step.
@@ -296,8 +300,12 @@ export const config: Options.Testrunner = {
      * @param {number}             result.duration  duration of scenario in milliseconds
      * @param {Object}             context          Cucumber World object
      */
-    // afterStep: function (step, scenario, result, context) {
-    // },
+    afterStep: async function (step, scenario, result, context) {
+        // Take screenshot if failed
+        if(!result.passed) {
+            await browser.takeScreenshot();
+        }
+    },
     /**
      *
      * Runs after a Cucumber Scenario.

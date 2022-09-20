@@ -4,9 +4,10 @@
     "description": "framework from 0 practice",
     "main": "index.js",
     "scripts": {
-        "demo": "set HEADLESS=N&&npx wdio wdio.conf.ts --cucumberOpts.tagExpression='@demo' ",
-        "smoke": "set HEADLESS=Y&&npx wdio wdio.conf.ts --cucumberOpts.tagExpression='@smoke' ",
-        "wdio": "wdio run test/wdio.conf.ts"
+        "debug:demo": "set DEBUG=Y&&set HEADLESS=N&&npx wdio config/wdio.test.conf.ts --cucumberOpts.tagExpression='@demo' ",
+        "test:demo": "set DEBUG=N&&set HEADLESS=N&&npx wdio config/wdio.test.conf.ts --cucumberOpts.tagExpression='@demo' ",
+        "smoke": "set DEBUG=N&&set HEADLESS=Y&&npx wdio wdio.conf.ts --cucumberOpts.tagExpression='@smoke' ",
+        "wdio": "set DEBUG=N&&wdio run test/wdio.conf.ts"
     },
     "keywords": [
         "wdio",

@@ -1,4 +1,4 @@
-Feature: Web interactions
+Feature: Sauce lab inventory app
 
     @smoke
     Scenario Outline: Demo advanced web interactions
