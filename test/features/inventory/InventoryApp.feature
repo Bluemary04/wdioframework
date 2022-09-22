@@ -1,7 +1,7 @@
 Feature: Sauce lab inventory app
 
     @smoke
-    Scenario Outline: Demo advanced web interactions
+    Scenario Outline: <TestID>: Demo advanced web interactions
         Given saucedemo page is opened and loaded
         When I login to the inventory app
         Then Inventory page should list <NumberOfElements>

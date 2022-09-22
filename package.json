@@ -6,7 +6,7 @@
     "scripts": {
         "debug:demo": "set DEBUG=Y&&set HEADLESS=N&&npx wdio config/wdio.test.conf.ts --cucumberOpts.tagExpression='@demo' ",
         "test:demo": "set DEBUG=N&&set HEADLESS=N&&npx wdio config/wdio.test.conf.ts --cucumberOpts.tagExpression='@demo' ",
-        "smoke": "set DEBUG=N&&set HEADLESS=Y&&npx wdio wdio.conf.ts --cucumberOpts.tagExpression='@smoke' ",
+        "smoke": "set DEBUG=N&&set HEADLESS=Y&&npx wdio wdio.conf.ts --cucumberOpts.tagExpression='@smoke' > output.txt ",
         "wdio": "set DEBUG=N&&wdio run test/wdio.conf.ts"
     },
     "keywords": [
@@ -27,7 +27,8 @@
         "chromedriver": "^105.0.0",
         "ts-node": "^10.9.1",
         "typescript": "^4.8.3",
-        "wdio-chromedriver-service": "^7.3.2"
+        "wdio-chromedriver-service": "^7.3.2",
+        "winston": "^3.8.2"
     },
     "dependencies": {
         "dotenv": "^16.0.2"
