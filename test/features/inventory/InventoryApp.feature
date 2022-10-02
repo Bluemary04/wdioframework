@@ -1,12 +1,12 @@
 Feature: Sauce lab inventory app
 
     @smoke
-    Scenario Outline: <TestID>: Demo advanced web interactions
+    Scenario Outline: <testid>: Demo advanced web interactions
         Given saucedemo page is opened and loaded
-        When I login to the inventory app
+        When I login to the inventory app with STANDARD
         Then Inventory page should list <NumberOfElements>
         And each price item should be greater than <MinimumPrice>
 
         Examples:
-            | TestID | NumberOfElements | MinimumPrice |
+            | testid | NumberOfElements | MinimumPrice |
             | INV-01 | 6                | 1            |
