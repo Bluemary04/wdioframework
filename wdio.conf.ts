@@ -7,6 +7,8 @@ let headless = process.env.HEADLESS;
 let debug = process.env.DEBUG;
 dotenv.config();
 
+console.log(`headless value: ${headless}-----------------------------------------------`);
+
 export const config: Options.Testrunner = {
   //
   // ====================
@@ -110,12 +112,12 @@ export const config: Options.Testrunner = {
       // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
       // excludeDriverLogs: ['bugreport', 'server'],
     },
-    {
-      maxInstances: 5,
-      browserName: "firefox",
-      acceptInsecureCerts: true,
-      timeouts: { implicit: 15000, pageLoad: 20000, script: 30000 },
-    },
+    // {
+    //   maxInstances: 5,
+    //   browserName: "firefox",
+    //   acceptInsecureCerts: true,
+    //   timeouts: { implicit: 15000, pageLoad: 20000, script: 30000 },
+    // },
   ],
   //
   // ===================
