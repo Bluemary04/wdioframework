@@ -1,6 +1,6 @@
 Feature: Sauce lab inventory app
 
-    @smoke
+    #@smoke
     Scenario Outline: <testid>: Demo advanced web interactions
         Given saucedemo page is opened and loaded
         When I login to the inventory app with STANDARD

@@ -1,6 +1,6 @@
 Feature: Customer search 
 
-    #@demo @e2e
+    @smoke
     Scenario Outline: <testid>: unable to find costumer
         Given I get a list of users from reqres.in
         And nopcommerce page is opened and loaded 
