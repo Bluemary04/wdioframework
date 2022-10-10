@@ -1,0 +1,1 @@
+{"74d5f4d22ec7796e0896231c80800f19":{"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"items":[{"uid":"f23d9aa78cdd43cc","reportUrl":"https://Bluemary04.github.io/wdioframework/1//#testresult/f23d9aa78cdd43cc","status":"passed","time":{"start":1665367337594,"stop":1665367351464,"duration":13870}}]}}

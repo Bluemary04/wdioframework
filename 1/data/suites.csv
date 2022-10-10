@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Oct 10 02:02:17 GMT 2022","Mon Oct 10 02:02:31 GMT 2022","13870","","Customer search","","Customer search","COMM-01: unable to find costumer","COMM-01: unable to find costumer",""
