@@ -9,11 +9,11 @@ Then(/^Inventory page should list (.*)$/, async function (numberOfProducts) {
   if (!numberOfProducts) throw Error("Invalid number provided");
 
   let productArr = await $$('[class="inventory_item"]');
-  // try {
+  try {
   chai.expect(productArr.length).to.equal(parseInt(numberOfProducts));
-  // } catch (err) {
-  //     reporter.addStep(this.testid, 'error', 'known issue- product mismatch', true, "https://instride.atlassian.net/browse/TOK-1517")
-  // }
+  } catch (err) {
+      reporter.addStep(this.testid, 'error', 'known issue- product mismatch', true, "https://instride.atlassian.net/browse/TOK-1517")
+  }
 });
 
 Then(

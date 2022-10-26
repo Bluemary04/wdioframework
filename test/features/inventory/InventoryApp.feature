@@ -9,4 +9,4 @@ Feature: Sauce lab inventory app
 
         Examples:
             | testid | NumberOfElements | MinimumPrice |
-            | INV-01 | 6                | 1            |
+            | INV-01 | 6              | 1            |
