@@ -1,0 +1,1 @@
+[{"uid":"66cf49040e9d6f5c","name":"COMM-02: find user by email","time":{"start":1666787664019,"stop":1666787677643,"duration":13624},"status":"passed","severity":"normal"},{"uid":"4841296054e37a9e","name":"COMM-01: unable to find costumer","time":{"start":1666787650490,"stop":1666787664019,"duration":13529},"status":"passed","severity":"normal"}]
