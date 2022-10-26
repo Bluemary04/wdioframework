@@ -12,7 +12,7 @@ Then(/^Inventory page should list (.*)$/, async function (numberOfProducts) {
   try {
   chai.expect(productArr.length).to.equal(parseInt(numberOfProducts));
   } catch (err) {
-      reporter.addStep(this.testid, 'error', 'known issue- product mismatch', true, "https://instride.atlassian.net/browse/TOK-1517")
+      reporter.addStep(this.testid, 'error', 'known issue- product mismatch', true, "https://google.com")
   }
 });
 
