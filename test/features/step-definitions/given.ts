@@ -6,9 +6,9 @@ import constants from "../../../data/constants.json";
 import apiHelper from "../../helper/apiHelper";
 import fs from "fs";
 
-Given(/^(.*) page is opened and loaded$/, async function (page) {
+Given(/^(.*) page is opened and loaded$/, async function (pageUrl) {
   try {
-    await nopcommerceHomePage.navigateTo(`https://admin-demo.nopcommerce.com/login`);
+    await nopcommerceHomePage.navigateTo(browser.config[pageUrl]);
   } catch (err) {
     throw err;
   }

@@ -33,7 +33,7 @@ When(
     try {
       reporter.addStep(this.testid, "info", `Logging in to nop commerce app`);
       //@ts-ignore
-      await nopcommerceHomePage.loginToNopcommerce(this.testid, browser.config.nopcommerceBaseUrl, process.env[`NOP_${userType}_USERNAME`], process.env[`NOP_${userType}_PASS`])
+      await nopcommerceHomePage.loginToNopcommerce(this.testid, browser.config.nopcommerceUrl, process.env[`NOP_${userType}_USERNAME`], process.env[`NOP_${userType}_PASS`])
     } catch (error) {
       error.message = `${this.testid}: Failed at nopcommer login, ${error.message}`;
       throw error;

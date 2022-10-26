@@ -12,7 +12,7 @@ Then(/^Inventory page should list (.*)$/, async function (numberOfProducts) {
   // try {
   chai.expect(productArr.length).to.equal(parseInt(numberOfProducts));
   // } catch (err) {
-  //     reporter.addStep(this.testid, 'error', 'known issue- product mismatch', true, "JIRA-1001")
+  //     reporter.addStep(this.testid, 'error', 'known issue- product mismatch', true, "https://instride.atlassian.net/browse/TOK-1517")
   // }
 });
 
@@ -69,4 +69,9 @@ Then(/^I expect the users are not in the customer list$/, async function () {
     throw err;
   }
 }
+);
+
+Then(/^the result box should have 1 result$/,function () {
+    reporter.addStep(this.testid, "info", "Checking search results");
+  }
 );

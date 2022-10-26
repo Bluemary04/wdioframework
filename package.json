@@ -5,8 +5,8 @@
     "main": "index.js",
     "scripts": {
         "debug:demo": "set DEBUG=Y&&set HEADLESS=N&&npx wdio config/wdio.test.conf.ts --cucumberOpts.tagExpression='@demo' ",
-        "test:demo": "set DEBUG=N&&set HEADLESS=N&&npx wdio config/wdio.test.conf.ts --cucumberOpts.tagExpression='@demo' ",
-        "test:smoke-githubActions": "export DEBUG=N&& export HEADLESS=Y&&npx wdio config/wdio.test.conf.ts --cucumberOpts.tagExpression='@smoke'",
+        "test:demo": "export DEBUG=N&&npx wdio config/wdio.test.conf.ts",
+        "test:smoke-githubActions": "export DEBUG=N&&npx wdio config/wdio.test.conf.ts --cucumberOpts.tagExpression='@smoke'",
         "smoke": "set DEBUG=N&&set HEADLESS=Y&&npx wdio wdio.conf.ts --cucumberOpts.tagExpression='@smoke' > output.txt ",
         "wdio": "set DEBUG=N&&wdio run test/wdio.conf.ts"
     },

@@ -3,12 +3,10 @@ import type { Options } from "@wdio/types";
 import fs from 'fs';
 import allure from '@wdio/allure-reporter';
 import dotenv from "dotenv";
+import runner from './config/runner.json';
 let headless = process.env.HEADLESS;
 let debug = process.env.DEBUG;
 dotenv.config();
-
-console.log(`headless value: ${headless}-----------------------------------------------`);
-
 export const config: Options.Testrunner = {
   //
   // ====================
@@ -87,15 +85,12 @@ export const config: Options.Testrunner = {
   //
   capabilities: [
     {
-      // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-      // grid with only 5 firefox instances available you can make sure that not more than
-      // 5 instances get started at a time.
       maxInstances: 5,
-      //
-      browserName: "chrome",
+      // chrome of firefox support
+      browserName: runner.browser,
       "goog:chromeOptions": {
-        args:
-          headless.toUpperCase() === "Y"
+        args: 
+        runner.headless.toUpperCase() === "Y"
             ? [
                 "--headless",
                 "--disable-dev-shm-usage",
@@ -220,7 +215,7 @@ export const config: Options.Testrunner = {
     // <boolean> fail if there are any undefined or pending steps
     strict: false,
     // <string> (expression) only execute the features or scenarios with tags matching the expression
-    tagExpression: "",
+    tagExpression:  runner.tagExpression != "" ? runner.tagExpression : "",
     // <number> timeout for step definitions
     timeout: 300000,
     // <boolean> Enable this config to treat undefined definitions as warnings.
@@ -347,8 +342,9 @@ export const config: Options.Testrunner = {
    * @param {number}                 result.duration  duration of scenario in milliseconds
    * @param {Object}                 context          Cucumber World object
    */
-  // afterScenario: function (world, result, context) {
-  // },
+  afterScenario: async function (world, result, context) {
+    await browser.deleteCookies();
+  },
   /**
    *
    * Runs after a Cucumber Feature.
